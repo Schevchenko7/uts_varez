@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,13 +17,13 @@
     <input type="number" id="jumlah" placeholder="contoh : 3">
     <br>
     <label for="status">Status Pembeli : </label>
-    <select name="status" id="status">
+    <select id="status">
         <option value="Umum">Umum</option>
         <option value="Member">Member</option>
     </select>
     <br>
-    <label for="diskon">Diskon (%) : </label>
-    <input type="number" id="diskon" placeholder="contoh : 20">
+    <label for="diskon">Diskon Tambahan (%) : </label>
+    <input type="number" id="diskon" placeholder="boleh kosong, contoh : 2">
     <br>
     <button onclick="hitungDiskon()">Hitung</button>
     <p id="hasil2"></p>
@@ -31,23 +31,27 @@
     <br>
 
     <h2>Aturan Diskon</h2>
-    <table>
-      <tr>
-        <th>Subtotal Belanja</th>
-        <th>Diskon</th>
-      </tr>
-      <tr>
-        <td>Kurang dari Rp50.000</td>
-        <td>0%</td>
-      </tr>
-      <tr>
-        <td>Rp50.000 sampai Rp99.999</td>
-        <td>5%</td>
-      </tr>
-      <tr>
-        <td>Rp100.000 ke atas</td>
-        <td>10%</td>
-      </tr>
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>Subtotal Belanja</th>
+            <th>Diskon</th>
+        </tr>
+        <tr>
+            <td>Kurang dari Rp50.000</td>
+            <td>0%</td>
+        </tr>
+        <tr>
+            <td>Rp50.000 sampai Rp99.999</td>
+            <td>5%</td>
+        </tr>
+        <tr>
+            <td>Rp100.000 ke atas</td>
+            <td>10%</td>
+        </tr>
+        <tr>
+            <td>Status Member</td>
+            <td>tambahan 5%</td>
+        </tr>
     </table>
 
     <script src="script.js"></script>
