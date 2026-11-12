@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Kalkulator Belanja Toko</title>
+</head>
+<body>
+    <h2>Hitung Diskon</h2>
+    <label for="nama2">Nama Barang : </label>
+    <input type="text" id="nama2" placeholder="contoh : Mie Instan">
+    <br>
+    <label for="harga2">Harga Barang (Rp) : </label>
+    <input type="number" id="harga2" placeholder="contoh : 100000">
+    <br>
+    <label for="jumlah">Jumlah Barang : </label>
+    <input type="number" id="jumlah" placeholder="contoh : 3">
+    <br>
+    <label for="status">Status Pembeli : </label>
+    <select name="status" id="status">
+        <option value="Umum">Umum</option>
+        <option value="Member">Member</option>
+    </select>
+    <br>
+    <label for="diskon">Diskon (%) : </label>
+    <input type="number" id="diskon" placeholder="contoh : 20">
+    <br>
+    <button onclick="hitungDiskon()">Hitung</button>
+    <p id="hasil2"></p>
+
+    <br>
+
+    <h2>Aturan Diskon</h2>
+    <table>
+      <tr>
+        <th>Subtotal Belanja</th>
+        <th>Diskon</th>
+      </tr>
+      <tr>
+        <td>Kurang dari Rp50.000</td>
+        <td>0%</td>
+      </tr>
+      <tr>
+        <td>Rp50.000 sampai Rp99.999</td>
+        <td>5%</td>
+      </tr>
+      <tr>
+        <td>Rp100.000 ke atas</td>
+        <td>10%</td>
+      </tr>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
