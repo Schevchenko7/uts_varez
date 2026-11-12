@@ -14,37 +14,45 @@ function cariDiskon(subtotal) {
     }
 }
 
+// simulasi total harga (tanpa diskon) untuk pembelian 1 sampai batas buah
+function simulasiHarga(angka, batas) {
+    let simulasi = document.getElementById("simulasi");
+
+    let text = "";
+    for (let i = 1; i <= batas; i++) {
+        text += rupiah(angka) + " x " + i + " = " + rupiah(angka * i) + "<br>";
+    }
+    simulasi.innerHTML = text;
+}
+
 // hitung diskon
 function hitungDiskon() {
     let nama = document.getElementById("nama2").value.trim();
     let harga = Number(document.getElementById("harga2").value);
     let jumlah = Number(document.getElementById("jumlah").value);
     let status = document.getElementById("status").value;
-    let tambahan = Number(document.getElementById("diskon").value);
     let hasil = document.getElementById("hasil2");
+    let simulasi = document.getElementById("simulasi");
 
     // validasi input
     if (nama === "") {
         alert("Nama barang tidak boleh kosong!");
         hasil.innerHTML = "";
+        simulasi.innerHTML = "";
         return;
     }
 
     if (harga <= 0) {
         alert("Harga barang harus lebih dari 0!");
         hasil.innerHTML = "";
+        simulasi.innerHTML = "";
         return;
     }
 
     if (jumlah <= 0) {
         alert("Jumlah barang harus lebih dari 0!");
         hasil.innerHTML = "";
-        return;
-    }
-
-    if (tambahan < 0 || tambahan > 100) {
-        alert("Diskon tambahan harus antara 0 sampai 100!");
-        hasil.innerHTML = "";
+        simulasi.innerHTML = "";
         return;
     }
 
@@ -60,11 +68,8 @@ function hitungDiskon() {
         diskonMember = 5;
     }
 
-    // total semua diskon, maksimal 100%
-    let totalDiskon = diskonAturan + diskonMember + tambahan;
-    if (totalDiskon > 100) {
-        totalDiskon = 100;
-    }
+    // total diskon = diskon aturan + diskon member
+    let totalDiskon = diskonAturan + diskonMember;
 
     let potongan = Math.round(subtotal * totalDiskon / 100);
     let hargaAkhir = subtotal - potongan;
@@ -74,9 +79,11 @@ function hitungDiskon() {
         `Subtotal = ${rupiah(harga)} x ${jumlah} = ${rupiah(subtotal)}<br>` +
         `<br>Diskon aturan = ${diskonAturan}%<br>` +
         `Diskon member = ${diskonMember}%<br>` +
-        `Diskon tambahan = ${tambahan}%<br>` +
         `Total diskon = ${totalDiskon}%<br>` +
         `<br>Potongan = ${rupiah(subtotal)} x ${totalDiskon}% = ${rupiah(potongan)}<br>` +
         `Harga akhir = ${rupiah(subtotal)} - ${rupiah(potongan)} = ${rupiah(hargaAkhir)}<br>` +
         `<br>Jadi, yang harus dibayar untuk ${nama} = ${rupiah(hargaAkhir)}`;
+
+    // tampilkan simulasi harga 1 sampai 5 buah
+    simulasiHarga(harga, 5);
 }
